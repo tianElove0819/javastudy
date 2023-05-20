@@ -11,21 +11,21 @@ public class Main extends JFrame implements ActionListener {
     private JTextField displayField;
 
     public Main() {
-        setTitle("¼ÆËãÆ÷");
+        setTitle("è®¡ç®—å™¨");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        //ÃÀ»¯
+        //ç¾åŒ–
         
         displayField = new JTextField();
         displayField.setEditable(false);
         
         
-        displayField.setFont(new Font("Arial", Font.PLAIN, 24)); // ÉèÖÃÎÄ±¾¿ò×ÖÌåºÍ´óĞ¡
-        displayField.setHorizontalAlignment(JTextField.RIGHT); // ÎÄ±¾ÓÒ¶ÔÆë
-        displayField.setPreferredSize(new Dimension(50, 70)); // ÉèÖÃÎÄ±¾¿ò´óĞ¡
-        displayField.setBackground(Color.PINK); // ÉèÖÃÎÄ±¾¿ò±³¾°É«
-        displayField.setForeground(Color.BLACK); // ÉèÖÃÎÄ±¾¿òÇ°¾°É«
+        displayField.setFont(new Font("Arial", Font.PLAIN, 24)); // è®¾ç½®æ–‡æœ¬æ¡†å­—ä½“å’Œå¤§å°
+        displayField.setHorizontalAlignment(JTextField.RIGHT); // æ–‡æœ¬å³å¯¹é½
+        displayField.setPreferredSize(new Dimension(50, 70)); // è®¾ç½®æ–‡æœ¬æ¡†å¤§å°
+        displayField.setBackground(Color.PINK); // è®¾ç½®æ–‡æœ¬æ¡†èƒŒæ™¯è‰²
+        displayField.setForeground(Color.BLACK); // è®¾ç½®æ–‡æœ¬æ¡†å‰æ™¯è‰²
         
         //
         displayField.addKeyListener(new KeyAdapter() {
@@ -46,16 +46,16 @@ public class Main extends JFrame implements ActionListener {
 
         String[] buttonLabels = {
                 "%", "CE", "C","revoke",	
-                "1/x","x^2","¡Ìx","¡Â",
-                "7", "8", "9", "¡Á",
+                "1/x","x^2","âˆšx","Ã·",
+                "7", "8", "9", "Ã—",
                 "4", "5", "6", "-",
                 "1", "2", "3", "+",
-                "¡À", "0", ".", "="
+                "Â±", "0", ".", "="
         };
         
-        //°´Å¥
-        Color buttonColor = new Color(255, 250,130); // ×Ô¶¨Òå°´Å¥±³¾°É«
-       // float alpha = 1.0f; // Í¸Ã÷¶ÈÖµ£¨È¡Öµ·¶Î§Îª0.0-1.0£©
+        //æŒ‰é’®
+        Color buttonColor = new Color(255, 250,130); // è‡ªå®šä¹‰æŒ‰é’®èƒŒæ™¯è‰²
+       // float alpha = 1.0f; // é€æ˜åº¦å€¼ï¼ˆå–å€¼èŒƒå›´ä¸º0.0-1.0ï¼‰
         
         
         for (int i = 0; i < buttonLabels.length; i++) {
@@ -71,7 +71,7 @@ public class Main extends JFrame implements ActionListener {
             button.setBackground(new Color(buttonColor.getRed(), buttonColor.getGreen(), buttonColor.getBlue()));
 
             
-            // Ìí¼ÓÊó±êÊÂ¼ş¼àÌıÆ÷
+            // æ·»åŠ é¼ æ ‡äº‹ä»¶ç›‘å¬å™¨
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -87,8 +87,8 @@ public class Main extends JFrame implements ActionListener {
             buttonPanel.add(button);
         
 
-            // ÉèÖÃ°´Å¥Í¸Ã÷¶È
-            //button.setOpaque(true); // »æÖÆ°´Å¥±³¾°
+            // è®¾ç½®æŒ‰é’®é€æ˜åº¦
+            //button.setOpaque(true); // ç»˜åˆ¶æŒ‰é’®èƒŒæ™¯
             //button.setBackground(new Color(buttonColor.getRed(), buttonColor.getGreen(), buttonColor.getBlue(), (int) (alpha * 255)));
 
            // buttonPanel.add(button);
@@ -110,13 +110,13 @@ public class Main extends JFrame implements ActionListener {
             clearEntry();
         } else if (command.equals("C")) {
             clear();
-        } else if (command.equals("¡À")) {
+        } else if (command.equals("Â±")) {
             toggleSign();
         } else if (command.equals("x^2")) {
             square();
         } else if (command.equals("1/x")) {
             reciprocal();
-        } else if (command.equals("¡Ìx")) {
+        } else if (command.equals("âˆšx")) {
             squareRoot();
         } else if (command.equals("revoke")) {
         	clearEntry();
@@ -229,15 +229,15 @@ public class Main extends JFrame implements ActionListener {
     	        double parseTerm() {
     	            double x = parseFactor();
     	            for (; ; ) {
-    	                if (eat('¡Á')) x *= parseFactor(); // *
-    	                else if (eat('¡Â')) x /= parseFactor(); // /
+    	                if (eat('Ã—')) x *= parseFactor(); // *
+    	                else if (eat('Ã·')) x /= parseFactor(); // /
     	                else return x;
     	            }
     	        }
 
     	        double parseFactor() {
-    	            if (eat('+')) return parseFactor(); // Õı
-    	            if (eat('-')) return -parseFactor(); // ¸º
+    	            if (eat('+')) return parseFactor(); // æ­£
+    	            if (eat('-')) return -parseFactor(); // è´Ÿ
 
     	            double x;
     	            int startPos = this.pos;
@@ -273,7 +273,7 @@ public class Main extends JFrame implements ActionListener {
     private void handleKeyboardInput(char keyChar) {
         if (Character.isDigit(keyChar) || keyChar == '.') {
             appendToDisplayField(Character.toString(keyChar));
-        } else if (keyChar == '+' || keyChar == '-' || keyChar == '*' || keyChar == '¡Â') {
+        } else if (keyChar == '+' || keyChar == '-' || keyChar == '*' || keyChar == 'Ã·') {
             appendToDisplayField(Character.toString(keyChar));
         } else if (keyChar == '=' || keyChar == KeyEvent.VK_ENTER) {
             calculate();
